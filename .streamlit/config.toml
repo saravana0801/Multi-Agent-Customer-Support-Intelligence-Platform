@@ -1,0 +1,37 @@
+[server]
+port = 8501
+enableCORS = false
+enableXsrfProtection = false
+maxUploadSize = 50
+
+[theme]
+base = "dark"
+primaryColor = "#3B82F6"
+backgroundColor = "#0F172A"
+secondaryBackgroundColor = "#1E293B"
+codeBackgroundColor = "#0B1120"
+textColor = "#F8FAFC"
+linkColor = "#60A5FA"
+borderColor = "#334155"
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "8px"
+buttonRadius = "8px"
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+codeFontSize = "13px"
+codeTextColor = "#E2E8F0"
+baseFontSize = 14
+baseFontWeight = 400
+headingFontSizes = ["32px", "26px", "20px", "16px", "14px", "12px"]
+headingFontWeights = [700, 650, 600, 600, 500, 500]
+linkUnderline = false
+chartCategoricalColors = ["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#06B6D4", "#EC4899"]
+
+[theme.sidebar]
+backgroundColor = "#1E293B"
+secondaryBackgroundColor = "#0F172A"
+codeBackgroundColor = "#0B1120"
+textColor = "#F1F5F9"
+borderColor = "#334155"
+primaryColor = "#3B82F6"

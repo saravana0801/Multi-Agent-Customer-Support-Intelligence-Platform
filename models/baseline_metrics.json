@@ -1,0 +1,47 @@
+{
+  "ticket_category": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "classes": [
+      "Account & Login",
+      "App & Website Issue",
+      "Delivery Issue",
+      "Payment Issue",
+      "Product Issue",
+      "Refund & Return",
+      "Seller & Product Listing"
+    ]
+  },
+  "priority": {
+    "accuracy": 0.9225,
+    "macro_f1": 0.9101,
+    "weighted_f1": 0.9216,
+    "classes": [
+      "High",
+      "Low",
+      "Medium"
+    ]
+  },
+  "sentiment": {
+    "accuracy": 0.4545,
+    "macro_f1": 0.4531,
+    "weighted_f1": 0.435,
+    "classes": [
+      "Negative",
+      "Neutral",
+      "Positive",
+      "Slightly Negative",
+      "Very Negative"
+    ]
+  },
+  "escalation_risk": {
+    "accuracy": 0.8275,
+    "macro_f1": 0.8218,
+    "weighted_f1": 0.832,
+    "classes": [
+      "No",
+      "Yes"
+    ]
+  }
+}

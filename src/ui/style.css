@@ -1,0 +1,155 @@
+/* Modern Glassmorphic Design System for Customer Support Intelligence Platform */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header Gradient */
+.hero-header {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 50%, #1E1B4B 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: #94A3B8;
+    margin-top: 6px;
+    font-weight: 400;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 16px 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+/* Category & Priority Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-high {
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-medium {
+    background: rgba(245, 158, 11, 0.15);
+    color: #FBBF24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-low {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-cat {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818CF8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.badge-hitl {
+    background: rgba(217, 70, 239, 0.15);
+    color: #E879F9;
+    border: 1px solid rgba(217, 70, 239, 0.3);
+}
+
+/* Evidence Cards */
+.evidence-card {
+    background: rgba(15, 23, 42, 0.8);
+    border-left: 4px solid #6366F1;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+
+.evidence-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #A5B4FC;
+    margin-bottom: 6px;
+}
+
+.evidence-body {
+    font-size: 13px;
+    color: #CBD5E1;
+    line-height: 1.5;
+}
+
+/* Custom Chat Bubble Enhancements */
+.stChatMessage {
+    border-radius: 14px !important;
+    margin-bottom: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Quick prompt chips */
+.chip-btn {
+    border-radius: 20px !important;
+    font-size: 13px !important;
+}
+
+/* Langfuse and Observability Badges */
+.badge-trace {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60A5FA;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.badge-guardrail-safe {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.badge-guardrail-block {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.trace-box {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid #3B82F6;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+}

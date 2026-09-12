@@ -1,0 +1,111 @@
+# ==============================================================================
+# Environment & Secrets (CRITICAL: NEVER COMMIT API KEYS OR PASSWORDS)
+# ==============================================================================
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.cert
+*.crt
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# ==============================================================================
+# Python Virtual Environments
+# ==============================================================================
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ==============================================================================
+# Python Bytecode, Compilations & Builds
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==============================================================================
+# Testing, Coverage & Linters
+# ==============================================================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# ==============================================================================
+# Databases, Vector Store & Session Caches (Dynamically Generated)
+# ==============================================================================
+chroma_db/*
+!chroma_db/.gitkeep
+*.sqlite
+*.sqlite3
+*.db
+:memory:.ses
+
+# ==============================================================================
+# Logs & Diagnostics
+# ==============================================================================
+logs/*
+!logs/.gitkeep
+*.log
+*.log.*
+
+# ==============================================================================
+# ML Model Binaries (Trained automatically by setup.sh / train_baseline_models.py)
+# ==============================================================================
+models/*.joblib
+models/*.pkl
+!models/.gitkeep
+!models/baseline_metrics.json
+
+# ==============================================================================
+# Operating System Artifacts
+# ==============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ==============================================================================
+# IDEs & Editor Configuration
+# ==============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
