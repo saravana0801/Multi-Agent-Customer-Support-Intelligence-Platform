@@ -49,7 +49,6 @@ flowchart TD
         API_Process["POST /api/v1/tickets/process"]
         API_HITL["POST /api/v1/tickets/hitl-action"]
         API_Stats["GET /api/v1/stats"]
-        API_Health["GET /api/v1/health"]
     end
 
     subgraph Guardrails_Layer ["🛡️ Security & Guardrails AI Engine"]
@@ -65,28 +64,20 @@ flowchart TD
     end
 
     subgraph Flow_Layer ["🤖 CrewAI Flow Orchestration Engine"]
-        F_Start([@start: Ingest & Guardrails Check])
+        F_Start(["@start: Intake & Security Rails"])
         F_Router{"Triage Decision Router"}
         F_Draft["Empathetic Policy Drafting Agent"]
-        F_Risk{"MCP Financial Risk Gate: Refund > $50?"}
-        F_Auto([Automated Instant Resolution])
-        F_Crisis([Crisis Escalation Dispatch])
-        F_HITL([Supervisor Review Queue])
-
-        F_Start --> F_Router
-        F_Router -->|Routine Query| F_Draft --> F_Risk
-        F_Router -->|Angry / Negative / High Escalation Risk| F_Crisis
-        F_Risk -->|Amount > $50 / High Risk| F_HITL
-        F_Risk -->|Standard Policy Compliant| F_Auto
+        F_Risk{"Financial Risk Gate: Refund > $50?"}
+        F_Auto(["Automated Instant Resolution"])
+        F_Crisis(["Crisis Escalation Dispatch"])
+        F_HITL(["Supervisor Review Queue"])
     end
 
     subgraph MCP_Layer ["🔌 Model Context Protocol (FastMCP v1.28)"]
-        MCP_Server["FastMCP Server: CustomerSupportMCPServer"]
         MCP_Client["MCP JSON-RPC Client Adapter"]
+        MCP_Server["FastMCP Server: CustomerSupportMCPServer"]
         MCP_Tools["Tools: lookup_order | search_faq | search_precedents | verify_refund"]
         MCP_Res["Resources: support://policies/return-policy | support://metrics/summary"]
-        MCP_Server --- MCP_Tools & MCP_Res
-        MCP_Client <==>|JSON-RPC| MCP_Server
     end
 
     subgraph Data_Layer ["💾 Persistence & Vector Store"]
@@ -100,23 +91,53 @@ flowchart TD
         LLM_NVIDIA["NVIDIA NIM: llama-3.1-nemotron-253b"]
         LLM_Cache["Sub-1ms Semantic Cache"]
         LLM_Offline["Zero-Token Offline Policy Synthesizer"]
-        LLM_Router --> LLM_Cache --> LLM_Groq --> LLM_NVIDIA --> LLM_Offline
     end
 
     subgraph Learning_Layer ["🔁 Continuous Learning Flywheel"]
-        HITL_Action["Supervisor Approval / Override"]
-        HITL_Ingest["ChromaDB golden_resolutions Ingestion"]
-        HITL_Action --> HITL_Ingest
+        HITL_Action["Supervisor Approval & Override"]
+        HITL_Ingest["ChromaDB Golden Ingestion"]
     end
 
-    UI_Layer <==>|HTTP / REST| API_Layer
-    API_Layer --> G_In --> Triage_Layer --> Flow_Layer
-    Flow_Layer <==> MCP_Client
-    MCP_Server <--> Data_Layer
-    Flow_Layer --> Gateway_Layer
-    Flow_Layer --> G_Out --> API_Layer
-    API_HITL --> Learning_Layer
-    Learning_Layer -.->|Dynamic Re-index| DB_Chroma
+    UI_Chat -->|Submit Ticket| API_Process
+    UI_HITL -->|Review Decision| API_HITL
+    API_Process --> G_In
+    G_In --> F_Start
+    F_Start --> ML_Cat
+    F_Start --> ML_Pri
+    F_Start --> ML_Esc
+    F_Start --> ML_Sent
+
+    ML_Cat --> F_Router
+    ML_Pri --> F_Router
+    ML_Esc --> F_Router
+    ML_Sent --> F_Router
+
+    F_Router -->|Routine Query| F_Draft
+    F_Router -->|Angry / Negative Sentiment| F_Crisis
+    F_Draft --> F_Risk
+    F_Risk -->|Refund <= $50| F_Auto
+    F_Risk -->|Refund > $50 or Escalation| F_HITL
+
+    F_Draft <-->|JSON-RPC| MCP_Client
+    MCP_Client <--> MCP_Server
+    MCP_Server --- MCP_Tools
+    MCP_Server --- MCP_Res
+    MCP_Tools <--> DB_OMS
+    MCP_Tools <--> DB_Chroma
+
+    F_Draft --> LLM_Router
+    LLM_Router --> LLM_Cache
+    LLM_Router --> LLM_Groq
+    LLM_Groq -.->|Fallback| LLM_NVIDIA
+    LLM_NVIDIA -.->|Fallback| LLM_Offline
+
+    F_Auto --> G_Out
+    F_Crisis --> G_Out
+    G_Out --> API_Process
+
+    API_HITL --> HITL_Action
+    HITL_Action --> HITL_Ingest
+    HITL_Ingest -->|Dynamic Re-index| DB_Chroma
 ```
 
 ---
