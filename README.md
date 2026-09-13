@@ -422,42 +422,6 @@ python3 src/flow/run_flow_demo.py
 
 ---
 
-## 🚢 Docker & Production Deployment
-
-A standard containerized setup using Docker and `docker-compose`:
-
-```yaml
-version: '3.8'
-
-services:
-  api:
-    build: .
-    command: uvicorn src.api.server:app --host 0.0.0.0 --port 8000
-    ports:
-      - "8000:8000"
-    environment:
-      - PYTHONPATH=.
-      - CREWAI_DISABLE_TELEMETRY=true
-    volumes:
-      - ./chroma_db:/app/chroma_db
-      - ./logs:/app/logs
-
-  ui:
-    build: .
-    command: streamlit run src/ui/app.py --server.port 8501 --server.address 0.0.0.0
-    ports:
-      - "8501:8501"
-    depends_on:
-      - api
-```
-
-Build and run:
-```bash
-docker compose up --build -d
-```
-
----
-
 ## 📜 Engineering Standards & Best Practices
 
 - **Zero-Token First**: Classification and safety checks must always be resolved via deterministic ML or regex before invoking LLMs.
